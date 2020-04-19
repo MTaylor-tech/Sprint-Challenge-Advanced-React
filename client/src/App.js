@@ -25,8 +25,10 @@ class App extends Component {
       <div className="App">
         <header><h1>Player Info</h1></header>
         <table>
-          <tr><th>Rank</th><th>Name</th><th>Country</th><th>Number of Searches</th></tr>
-          {this.state.players.map(p=><Player player={p} key={p.id} />)}
+          <thead><tr><th>Rank</th><th>Name</th><th>Country</th><th>Number of Searches</th></tr></thead>
+          <tbody>
+            {this.state.players.map(p=><Player player={p} key={p.id} />)}
+          </tbody>
         </table>
       </div>
     );
