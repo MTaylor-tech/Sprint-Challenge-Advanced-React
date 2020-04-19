@@ -23,9 +23,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">Player Info
-        </header>
-        {this.state.players.map(p=><Player player={p} />)}
+        <header><h1>Player Info</h1></header>
+        <table>
+          <tr><th>Rank</th><th>Name</th><th>Country</th><th>Number of Searches</th></tr>
+          {this.state.players.map(p=><Player player={p} key={p.id} />)}
+        </table>
       </div>
     );
   }

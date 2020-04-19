@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 
 class Player extends Component {
-  constructor(props) {
-    super();
-  }
 
   render() {
     return (
-      <p>
-        {this.props.player.name}
-        {this.props.player.country}
-        {this.props.player.searches}
-      </p>
+      <tr>
+        <td>{this.props.player.id+1}</td>
+        <td>{this.props.player.name}</td>
+        <td>{this.props.player.country}</td>
+        <td>{this.props.player.searches}</td>
+      </tr>
     );
   }
 }
