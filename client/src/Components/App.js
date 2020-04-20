@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import axios from 'axios';
 import '../CSS/App.css';
 import Player from './Player.js';
 import HeaderBar from './HeaderBar.js';
+import useLocalStorage from '../Hooks/useLocalStorage';
+
 
 class App extends Component {
   constructor() {
@@ -10,20 +12,14 @@ class App extends Component {
     this.state = {
       players: [],
       displayed: [],
-      favorites: [4, 5, 11, 19]
+      favorites: []
     };
   }
 
   componentDidMount() {
     axios.get('http://localhost:5000/api/players')
       .then(response=>{
-        this.setState({players:response.data.map(p=>{
-            if (this.state.favorites.includes(p.id)) {
-              return {...p, fav: true};
-            } else {
-              return {...p, fav: false};
-            }
-        })});
+        this.setState({players:response.data});
         console.log(response);
       })
       .catch(error=>console.log(error));
@@ -37,14 +33,18 @@ class App extends Component {
     }
   };
 
+  setAllFavorites = (favs) => {
+    this.setState({favorites: favs});
+  }
+
   render() {
     return (
       <div className="App">
         <header><h1>Player Info</h1></header>
         <table>
-          <HeaderBar />
+          <HeaderBar favorites={this.state.favorites} setFavs={this.setAllFavorites} />
           <tbody>
-            {this.state.players.map(p=><Player player={p} key={p.id} setFav={this.setFav} />)}
+            {this.state.players.map(p=><Player player={p} key={p.id} favorites={this.state.favorites} setFav={this.setFav} />)}
           </tbody>
         </table>
       </div>

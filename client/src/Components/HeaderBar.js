@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import useLocalStorage from '../Hooks/useLocalStorage';
 
-export default class HeaderBar extends React.Component {
+export default function HeaderBar(props) {
+    const [favorites, setFavorites] = useLocalStorage("favorites",[...props.favorites]);
 
-  render(){
+    useEffect(()=>{
+      props.setFavs(favorites);
+    },[favorites]);
+
     return (
       <thead>
         <tr>
@@ -14,6 +19,4 @@ export default class HeaderBar extends React.Component {
         </tr>
       </thead>
     );
-  }
-
 }

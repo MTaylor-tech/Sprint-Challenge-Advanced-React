@@ -10,7 +10,7 @@ class Player extends Component {
 
     return (
       <tr>
-        {this.props.player.fav?<td onClick={this.clickHandler}>&#9733;</td>:<td onClick={this.clickHandler}>&#9734;</td>}
+        {this.props.favorites.includes(this.props.player.id)?<td onClick={this.clickHandler}>&#9733;</td>:<td onClick={this.clickHandler}>&#9734;</td>}
         <td>{this.props.player.id+1}</td>
         <td id={`PlayerName${this.props.player.id}`}>{this.props.player.name}</td>
         <td>{this.props.player.country}</td>
