@@ -9,11 +9,11 @@ import useLocalStorage from '../Hooks/useLocalStorage';
 class App extends Component {
   constructor() {
     super();
-    const favs = window.localStorage.getItem("favorites");
+    const favs = window.localStorage.getItem("favorites")?JSON.parse(window.localStorage.getItem("favorites")):[];
     this.state = {
       players: [],
       displayed: [],
-      favorites: JSON.parse(favs)
+      favorites: favs
     };
   }
 

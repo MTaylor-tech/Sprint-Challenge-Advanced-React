@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import useLocalStorage from '../Hooks/useLocalStorage';
 
 export default function HeaderBar(props) {
-    const [favorites, setFavorites] = useLocalStorage("favorites",[...props.favorites]);
+    const [favorites, setFavorites] = useLocalStorage("favorites",[]);
 
     useEffect(()=>{
       setFavorites(props.favorites);
