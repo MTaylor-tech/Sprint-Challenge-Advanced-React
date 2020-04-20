@@ -5,8 +5,8 @@ export default function HeaderBar(props) {
     const [favorites, setFavorites] = useLocalStorage("favorites",[...props.favorites]);
 
     useEffect(()=>{
-      props.setFavs(favorites);
-    },[favorites]);
+      setFavorites(props.favorites);
+    },[props.favorites]);
 
     return (
       <thead>
